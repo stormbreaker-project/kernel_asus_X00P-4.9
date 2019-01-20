@@ -858,6 +858,7 @@ source "drivers/misc/cxl/Kconfig"
 source "drivers/misc/fpr_FingerprintCard/Kconfig"
 source "drivers/misc/wind_driver/Kconfig"
 source "drivers/misc/sim_int_default_set/Kconfig"
+source "drivers/misc/usb_temp_check/Kconfig"
 endmenu
 
 config OKL4_LINK_SHBUF
