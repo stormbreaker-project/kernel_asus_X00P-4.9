@@ -36,10 +36,10 @@ extern void himax_log_touch_int_devation(int touched);
 
 
 
-static int reg_set_optimum_mode_check(struct regulator *reg, int load_uA)
+static int reg_set_load_check(struct regulator *reg, int load_uA)
 {
 	return (regulator_count_voltages(reg) > 0) ?
-		regulator_set_optimum_mode(reg, load_uA) : 0;
+		regulator_set_load(reg, load_uA) : 0;
 }
 
 int himax_dev_set(struct himax_ts_data *ts)
@@ -579,7 +579,7 @@ int himax_power_on(bool on)
 				return -EINVAL;
 		}
 
-		ret = reg_set_optimum_mode_check(avdd,
+		ret = reg_set_load_check(avdd,
 			10000);
 		if (ret < 0) {
 			dev_err(&private_ts->client->dev,
