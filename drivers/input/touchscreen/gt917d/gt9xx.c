@@ -3129,10 +3129,10 @@ bool gtp_get_charger_status(void)
 #endif
 //hebiao@wind-mobi.com 20171123 end
 //hebiao@wind-mobi.com 20170825 begin
-static int reg_set_optimum_mode_check(struct regulator *reg, int load_uA)
+static int reg_set_load_check(struct regulator *reg, int load_uA)
 {
 	return (regulator_count_voltages(reg) > 0) ?
-		regulator_set_optimum_mode(reg, load_uA) : 0;
+		regulator_set_load(reg, load_uA) : 0;
 }
 
 /**
@@ -3167,7 +3167,7 @@ static int gtp_power_switch(struct i2c_client *client, int on)
 		}
 
 		
-		ret = reg_set_optimum_mode_check(avdd,
+		ret = reg_set_load_check(avdd,
 			10000);
 		if (ret < 0) {
 			dev_err(&client->dev,
