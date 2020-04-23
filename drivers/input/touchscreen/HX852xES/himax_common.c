@@ -1617,7 +1617,7 @@ void himax_ts_work(struct himax_ts_data *ts)
 #if defined(HX_SMART_WAKEUP)
     else
     {
-        wake_lock_timeout(&ts->ts_SMWP_wake_lock, TS_WAKE_LOCK_TIMEOUT);
+        __pm_wakeup_event(&ts->ts_SMWP_wake_lock, TS_WAKE_LOCK_TIMEOUT);
         himax_wake_check_func();
     }
 #endif
@@ -2099,7 +2099,7 @@ int himax_chip_common_probe(struct i2c_client *client, const struct i2c_device_i
 
 #ifdef HX_SMART_WAKEUP
     ts->SMWP_enable = 0;//hongfan@wind-mobi 20180206 add
-    wake_lock_init(&ts->ts_SMWP_wake_lock, WAKE_LOCK_SUSPEND, HIMAX_common_NAME);
+    wakeup_source_init(&ts->ts_SMWP_wake_lock, HIMAX_common_NAME);
 #endif
 #ifdef HX_HIGH_SENSE
     ts->HSEN_enable=0;
@@ -2165,7 +2165,7 @@ err_report_data_init_failed:
 err_ito_test_wq_failed:
 #endif
 #ifdef HX_SMART_WAKEUP
-    wake_lock_destroy(&ts->ts_SMWP_wake_lock);
+    wakeup_source_trash(&ts->ts_SMWP_wake_lock);
 #endif
 #ifdef  HX_CHIP_STATUS_MONITOR
     g_chip_monitor_data->HX_CHIP_MONITOR_EN = 0;
@@ -2250,7 +2250,7 @@ int himax_chip_common_remove(struct i2c_client *client)
     input_unregister_device(ts->input_dev);
 
 #ifdef HX_SMART_WAKEUP
-    wake_lock_destroy(&ts->ts_SMWP_wake_lock);
+    wakeup_source_trash(&ts->ts_SMWP_wake_lock);
 #endif
     kfree(ts);
 
