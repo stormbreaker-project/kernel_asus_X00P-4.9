@@ -1453,5 +1453,6 @@ config TOUCHSCREEN_RAYDIUM_CHIPSET
 	  If unsure, say N.
 
 source "drivers/input/touchscreen/gt917d/Kconfig"
+source "drivers/input/touchscreen/ft5346i/Kconfig"
 
 endif
