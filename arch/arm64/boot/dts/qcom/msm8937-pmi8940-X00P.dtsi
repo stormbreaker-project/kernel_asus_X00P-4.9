@@ -11,9 +11,9 @@
  * GNU General Public License for more details.
  */
 
-#include "msm-pmi8940.dtsi"
+#include "pmi8940.dtsi"
 #include "msm8937-mtp.dtsi"
-#include "msm8937-audio-mtp.dtsi"
+#include "msm8937-audio.dtsi"
 #include "X00P/overlay.dtsi"
 
 &soc {
