@@ -11,21 +11,10 @@
  * GNU General Public License for more details.
  */
 
-/dts-v1/;
-
-#include "msm8937.dtsi"
-#include "msm8937-pmi8940-X00P.dtsi"
 #include "msm-pmi8940.dtsi"
 #include "msm8937-mtp.dtsi"
 #include "msm8937-audio-mtp.dtsi"
 #include "X00P/overlay.dtsi"
-
-/ {
-        model = "Qualcomm Technologies, Inc. MSM8937-PMI8940 MTP";
-        compatible = "qcom,msm8937-mtp", "qcom,msm8937", "qcom,mtp";
-        qcom,board-id= <8 0>;
-        qcom,pmic-id = <0x10019 0x020040 0x0 0x0>;
-};
 
 &soc {
 	led_flash0: qcom,camera-flash@0 {
