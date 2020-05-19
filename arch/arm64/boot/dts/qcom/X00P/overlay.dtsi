@@ -1,0 +1,7 @@
+#include "X00P-camera.dtsi"
+#include "X00P-audio.dtsi"
+#include "X00P-mdss.dtsi"
+#include "X00P-pinctrl.dtsi"
+#include "X00P-general.dtsi"
+#include "X00P-qrd.dtsi"
+#include "X00P-pmi8940.dtsi"
