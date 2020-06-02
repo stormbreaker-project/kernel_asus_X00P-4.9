@@ -265,12 +265,12 @@
 
 			front_flash_led_enable: front_flash_led_enable {
 				mux {
-					pins = "gpio50";
+				//	pins = "gpio50";
 					function = "gpio";
 				};
 
 				config {
-					pins = "gpio50";
+				//	pins = "gpio50";
 					drive-strength = <16>;
 					output-high;
 				};
@@ -278,12 +278,12 @@
 
 			front_flash_led_disable: front_flash_led_disable {
 				mux {
-					pins = "gpio50";
+				//	pins = "gpio50";
 					function = "gpio";
 				};
 
 				config {
-					pins = "gpio50";
+				//	pins = "gpio50";
 					drive-strength = <2>;
 					output-low;
 				};
