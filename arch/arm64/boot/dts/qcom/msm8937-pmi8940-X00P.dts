@@ -50,7 +50,7 @@
 /*******zhenglihong@wind-mobi.com 20171017 end*************/
 
 
-&pmi8940_charger {
+&qpnp_smbcharger {
 	qcom,battery-data = <&mtp_batterydata>;
 	qcom,chg-led-sw-controls;
 	qcom,chg-led-support;
@@ -103,7 +103,7 @@
 		#include "3340624_Wind_E300cos_4000mAh_averaged_MasterSlave_Feb20th2018_PMI8940.dtsi"     //liulinsheng@wind-mobi.com 
 	};
 };
-&pmi8940_fg {
+&qpnp_fg {
 	qcom,battery-data = <&mtp_batterydata>;
 };
 
