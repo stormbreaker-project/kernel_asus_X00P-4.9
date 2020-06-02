@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2017, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015-2018, The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -18,17 +18,17 @@
 };
 
 &soc {
+
 	usb_otg: usb@78db000 {
 		qcom,hsusb-otg-phy-init-seq = <0x44 0x80 0x65 0x81 0x33 0x82 0x33 0x83 0xffffffff>;
 		qcom,hsusb-otg-phy-host-init-seq = <0x44 0x80 0x65 0x81 0x33 0x82 0x33 0x83 0xffffffff>;
 	};
 
 	/delete-node/ qseecom@85b00000;
+
 	qcom_seecom: qseecom@84A00000 {
 		compatible = "qcom,qseecom";
-                /* add by leadcore start */
 		reg = <0x84A00000 0x1900000>;
-                /* add by leadcore end */
 		reg-names = "secapp-region";
 		qcom,hlos-num-ce-hw-instances = <1>;
 		qcom,hlos-ce-hw-instance = <0>;

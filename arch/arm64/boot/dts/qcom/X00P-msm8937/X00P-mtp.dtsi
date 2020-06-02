@@ -13,20 +13,18 @@
 
 /* msm8937-mtp */
 
-&sdhc_2 {
-	cd-gpios = <&tlmm 67 0x0>;
-};
-
 &soc {
 	fingerprint_gpio {
 		compatible = "qcom,leadcore-gpio";
 		interrupt-parent = <&tlmm>;
 		interrupts = <12 0x0>;
+
 		fp-gpio-reset = <&tlmm 7 0x00>;
 		fp-gpio-int = <&tlmm  12 0x00>;
 		fp-gpio-power = <&tlmm  86 0x00>;
 		status = "okay";
 	};
+
 	ma_fp {
 		compatible = "microarray,fingerprint";
 		interrupt-parent = <&tlmm>;
@@ -34,7 +32,7 @@
 		mafp,gpio_irq = <&tlmm 12 0>;
 		mafp,gpio_power = <&tlmm 86 0>;
 	};
-	
+
 	sw_fp {
 		compatible = "sunwave,fingerprint";
 		interrupt-parent = <&tlmm>;
@@ -69,10 +67,10 @@
 		pinctrl-names = "rfstatus";
 		pinctrl-0 = <&rf_int_default>;
 	};
-	
+
 	i2c@78b7000 {
-		         status = "ok";
-		 focaltech@38 {
+		status = "ok";
+		  focaltech@38 {
 			compatible = "focaltech,fts"; /* do not modify */
 			reg = <0x38>;
 			interrupt-parent = <&tlmm>;
@@ -89,19 +87,20 @@
 			focaltech,reset-gpio = <&tlmm 64 0x00>;
 			focaltech,mag-rst = <&tlmm 44 0x00>;
 			focaltech,irq-gpio = <&tlmm 65 0x2008>;
-			focaltech,max-touch-number = <5>; 
+			focaltech,max-touch-number = <5>; /* ��󴥵��� */
 			focaltech,disable-gpios;
 			focaltech,button-map = <158 139 172>;
 			focaltech,resume-in-workqueue;
+		/* Underlying clocks used by secure touch */
 			clock-names = "iface_clk", "core_clk";
 			clocks = <&clock_gcc clk_gcc_blsp1_ahb_clk>,
 				<&clock_gcc clk_gcc_blsp1_qup3_i2c_apps_clk>;
 		};
 	};
      
-	i2c@78b7000 {
-			status = "ok";
-		goodix_ts@5d {
+	i2c@78b7000 { 
+		status = "ok";
+		  goodix_ts@5d {
 			compatible = "goodix,gt9xx";
 			reg = <0x5d>;
 			interrupt-parent = <&tlmm>;
@@ -112,11 +111,12 @@
 			goodix,rst-gpio = <&tlmm 64 0x00>;
 			goodix,irq-gpio = <&tlmm 65 0x2008>;
 			pinctrl-names = "eint_as_int","eint_output_low", "eint_output_high", "mag_output_high";
-			pinctrl-0 = <&eint_as_int>;
-			pinctrl-1 = <&eint_output_low>;
-			pinctrl-2 = <&eint_output_high>;
-			pinctrl-3 = <&mag_output_high>;
-			goodix,cfg-group0 = [
+				pinctrl-0 = <&eint_as_int>;
+				pinctrl-1 = <&eint_output_low>;
+				pinctrl-2 = <&eint_output_high>;
+				pinctrl-3 = <&mag_output_high>;
+						
+				goodix,cfg-group0 = [
 					45 D0 02 A0 05 0A 3C 10 21 CF 2D
 					0F 3C 32 05 F3 00 00 60 62 00 11
 					06 15 16 1A 14 87 27 DD 4C 4E D3
@@ -138,7 +138,7 @@
 					06 00 02 05 78 1C 14 14 28 00 00
 					00 00 00 00 00 00 00 00 00 00 00
 					00 00 00 00 00 00 20 01];
-			goodix,cfg-group2 = [
+				goodix,cfg-group2 = [
 					45 D0 02 A0 05 0A 3C 10 21 CF 2D
 					0F 55 46 05 F3 00 00 60 62 00 11
 					06 15 16 1A 14 87 27 DD 4C 4E D3
@@ -160,12 +160,12 @@
 					06 00 02 05 78 1C 14 14 28 00 00
 					00 7E 02 04 00 00 00 00 00 00 00
 					00 00 00 00 00 00 A2 01];
-		};
+			};
 	};
-	
+
 	i2c@78b7000 { 
-			status = "ok";
-		himax-ts@48 {
+		status = "ok";
+		  himax-ts@48 {
 			compatible = "himax,hxcommon";
 			reg = <0x48>;
 			interrupt-parent = <&tlmm>;
@@ -179,6 +179,6 @@
 			himax,panel-coords = <0 720 0 1440>;
 			pinctrl-names = "mag_output_high";
 			pinctrl-0 = <&mag_output_high>;
-		};
-	};
+			};
+		};   
 };
