@@ -14,9 +14,9 @@
 /dts-v1/;
 
 #include "msm8937.dtsi"
-#include "msm-pmi8940.dtsi"
+#include "pmi8940.dtsi"
 #include "msm8937-mtp.dtsi"
-#include "msm8937-audio-mtp.dtsi"
+#include "msm8937-audio.dtsi"
 
 / {
         model = "Qualcomm Technologies, Inc. MSM8937-PMI8940 MTP";
