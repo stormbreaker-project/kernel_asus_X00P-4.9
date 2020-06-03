@@ -25,6 +25,9 @@
         qcom,pmic-id = <0x10019 0x020040 0x0 0x0>;
 };
 
+#include "msm8937-mdss-panels.dtsi"
+#include "msm8937-camera-sensor-mtp.dtsi"
+
 &soc {
 	led_flash0: qcom,camera-flash@0 {
 		cell-index = <0>;
