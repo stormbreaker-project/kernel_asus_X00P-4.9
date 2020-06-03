@@ -13,7 +13,7 @@
 
 /* msm8937-pinctrl */
 
-&cam_sensor_rear_reset {
+&cam_sensor_rear_default {
         mux {
                 pins = "gpio38", "gpio35";
         };
@@ -23,7 +23,7 @@
         };
 };
 
-&cam_sensor_rear_reset_sleep {
+&cam_sensor_rear_sleep {
         mux {
                 pins = "gpio38","gpio35";
         };
@@ -116,51 +116,55 @@
 		};
 	};
 
-	usbtem_int_default: usbtem_int_default {
-		muex {
-			pins = "gpio124";
-			function = "gpio";
-		};
-		config {
-			pins = "gpio124";
-			drive-strength = <8>;
-			bias-pull-up;
-		};
-	};
 
-	sim1_eint_default: sim1_eint_default {
-		muex {
-			pins = "gpio54";
-			function = "gpio";
+	pmx-uartconsole {
+		usbtem_int_default: usbtem_int_default {
+			muex {
+				pins = "gpio124";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio124";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
 		};
-		config {
-			pins = "gpio54";
-			drive-strength = <8>;
-			bias-disable;
-		};
-	};
 
-	sim2_eint_default: sim2_eint_default {
-		muex {
-			pins = "gpio58";
-			function = "gpio";
+		sim1_eint_default: sim1_eint_default {
+			muex {
+				pins = "gpio54";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio54";
+				drive-strength = <8>;
+				bias-disable;
+			};
 		};
-		config {
-			pins = "gpio58";
-			drive-strength = <8>;
-			bias-disable;
+
+		sim2_eint_default: sim2_eint_default {
+			muex {
+				pins = "gpio58";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio58";
+				drive-strength = <8>;
+				bias-disable;
+			};
 		};
-	};
  
-	rf_int_default: rf_int_default {
-		muex {
-			pins = "gpio110";
-			function = "gpio";
-		};
-		config {
-			pins = "gpio110";
-			drive-strength = <2>;
-			bias-disable;
+		rf_int_default: rf_int_default {
+			muex {
+				pins = "gpio110";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio110";
+				drive-strength = <2>;
+				bias-disable;
+				
+			};
 		};
 	};
 
@@ -203,8 +207,8 @@
 				bias-pull-up;
 			};
 		};
-
-	cam_sensor_mipi_switch_default: cam_sensor_mipi_switch_default {
+ 
+        cam_sensor_mipi_switch_default: cam_sensor_mipi_switch_default {
 			mux {
 				pins = "gpio97", "gpio96";
 				function = "gpio";

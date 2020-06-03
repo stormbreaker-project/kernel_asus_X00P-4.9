@@ -54,9 +54,9 @@
 		qcom,cam-vreg-op-mode = <1200000 2800000 2850000>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk0_default
-				&cam_sensor_rear_reset
+				&cam_sensor_rear_default
 				&cam_sensor_vio>;
-		pinctrl-1 = <&cam_sensor_mclk0_sleep &cam_sensor_rear_reset_sleep &cam_sensor_vio_sleep>;
+		pinctrl-1 = <&cam_sensor_mclk0_sleep &cam_sensor_rear_sleep &cam_sensor_vio_sleep>;
 		gpios = <&tlmm 26 0>,
 			<&tlmm 36 0>,
 			<&tlmm 35 0>,
@@ -132,7 +132,7 @@
 		pinctrl-0 = <&cam_sensor_mclk2_default
 				&cam_sensor_front1_default
 				&cam_sensor_vio>;
-		pinctrl-1 = <&cam_sensor_mclk2_sleep &cam_sensor_front1_sleep &cam_sensor_vio_sleep >;
+		pinctrl-1 = <&cam_sensor_mclk2_sleep &cam_sensor_front1_sleep &cam_sensor_vio_sleep>;
 		gpios = <&tlmm 28 0>,
 			<&tlmm 40 0>,
 			<&tlmm 39 0>,
@@ -145,7 +145,7 @@
 		qcom,gpio-req-tbl-label = "CAMIF_MCLK2",
 			"CAM_RESET2",
 			"CAM_STANDBY2",
-			"CAM_SENSOR_VIO";
+			"CAM_VIO";
 		status = "ok";
 		clocks = <&clock_gcc clk_mclk2_clk_src>,
 				<&clock_gcc clk_gcc_camss_mclk2_clk>;
@@ -161,7 +161,7 @@
 		qcom,csid-sd-index = <0>;
 		qcom,mount-angle = <270>;
 		qcom,led-flash-src = <&led_flash0>;
-	//	qcom,eeprom-src = <&eeprom0>;
+		qcom,eeprom-src = <&eeprom0>;
 		qcom,actuator-src = <&actuator0>;
 		cam_vdig-supply = <&pm8937_l23>;
 		cam_vana-supply = <&pm8937_l22>;
@@ -172,9 +172,9 @@
 		qcom,cam-vreg-op-mode = <105000 100000 80000>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk0_default
-				&cam_sensor_rear_reset
+				&cam_sensor_rear_default
 				&cam_sensor_vio>;
-		pinctrl-1 = <&cam_sensor_mclk0_sleep &cam_sensor_rear_reset_sleep
+		pinctrl-1 = <&cam_sensor_mclk0_sleep &cam_sensor_rear_sleep
 				&cam_sensor_vio_sleep>;
 		gpios = <&tlmm 26 0>,
 			<&tlmm 38 0>,

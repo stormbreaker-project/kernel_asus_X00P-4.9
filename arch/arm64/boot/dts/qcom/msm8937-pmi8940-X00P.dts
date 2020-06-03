@@ -14,9 +14,9 @@
 /dts-v1/;
 
 #include "msm8937.dtsi"
-#include "pmi8940.dtsi"
+#include "msm-pmi8940.dtsi"
 #include "msm8937-mtp.dtsi"
-#include "msm8937-audio.dtsi"
+#include "msm8937-audio-mtp.dtsi"
 
 / {
         model = "Qualcomm Technologies, Inc. MSM8937-PMI8940 MTP";
@@ -26,7 +26,6 @@
 };
 
 &soc {
-/*******zhenglihong@wind-mobi.com 20171017 begin*************/
 	led_flash0: qcom,camera-flash@0 {
 		cell-index = <0>;
 		compatible = "qcom,camera-flash";
@@ -47,10 +46,8 @@
 		status = "ok";
 	};
 };
-/*******zhenglihong@wind-mobi.com 20171017 end*************/
 
-
-&qpnp_smbcharger {
+&pmi8940_charger {
 	qcom,battery-data = <&mtp_batterydata>;
 	qcom,chg-led-sw-controls;
 	qcom,chg-led-support;
@@ -95,18 +92,17 @@
 		qcom,supply-post-on-sleep = <20>;
 	};
 };
- /* lvwenkang@wind-mobi.com 20180116 begin*/
+
 /{
 	mtp_batterydata: qcom,battery-data {
-		qcom,batt-id-range-pct = <60>;   //修改电池id阻抗容忍范围，兼容两块电池，使100kohm和50kohm都能充电
-		#include "batterydata-ascent-3700mAh.dtsi"     //liulinsheng@wind-mobi.com 
-		#include "3340624_Wind_E300cos_4000mAh_averaged_MasterSlave_Feb20th2018_PMI8940.dtsi"     //liulinsheng@wind-mobi.com 
+		qcom,batt-id-range-pct = <60>;
+		#include "X00P-msm8937/battery/batterydata-ascent-3700mAh.dtsi"
+		#include "X00P-msm8937/battery/3340624_Wind_E300cos_4000mAh_averaged_MasterSlave_Feb20th2018_PMI8940.dtsi"
 	};
 };
-&qpnp_fg {
+
+&pmi8940_fg {
 	qcom,battery-data = <&mtp_batterydata>;
 };
-
- /* lvwenkang@wind-mobi.com 20180116 end*/
 
 #include "X00P-msm8937/overlay.dtsi"
