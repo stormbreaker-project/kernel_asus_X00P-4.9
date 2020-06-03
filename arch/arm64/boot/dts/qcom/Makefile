@@ -340,7 +340,6 @@ dtb-$(CONFIG_ARCH_SDM670) += sdm670-rumi.dtb \
 	sxr1130-qrd.dtb \
 	sxr1130-svr.dtb
 endif
-
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 dtbo-$(CONFIG_ARCH_MSM8940) += msm8940-mtp-overlay.dtbo
 dtbo-$(CONFIG_ARCH_MSM8940) += msm8940-cdp-overlay.dtbo
@@ -526,6 +525,9 @@ sda429-bg-wtp-overlay.dtbo-base := sda429-bg-wtp.dtb
 sdm429-bg-wdp-overlay.dtbo-base := sdm429-bg-wdp.dtb
 sda429-bg-wdp-overlay.dtbo-base := sda429-bg-wdp.dtb
 else
+ifeq ($(CONFIG_MACH_ASUS_MSM8937),y)
+dtb-$(CONFIG_MACH_ASUS_X00P) += msm8937-pmi8940-X00P.dtb
+else
 dtb-$(CONFIG_ARCH_MSM8953) += msm8953-cdp.dtb \
 	msm8953-mtp.dtb \
 	msm8953-ext-codec-mtp.dtb \
@@ -667,6 +669,7 @@ dtb-$(CONFIG_ARCH_SDM429) += sdm429-mtp.dtb \
 endif
 
 dtb-$(CONFIG_ARCH_SDM845_VM) += sdm845-vm.dtb
+endif
 
 always		:= $(dtb-y)
 subdir-y	:= $(dts-dirs)
