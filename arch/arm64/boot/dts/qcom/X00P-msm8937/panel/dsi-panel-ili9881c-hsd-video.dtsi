@@ -324,6 +324,8 @@
 //hebiao@wind-mobi.com 20171201 physical size end
 		qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 		qcom,mdss-dsi-reset-sequence = <1 20>, <0 20>, <1 120>;
+		qcom,ulps-enabled;
+		qcom,panel-allow-phy-poweroff;
 	};
 };
 //hebiao@wind-mobi.com 20170824 end
