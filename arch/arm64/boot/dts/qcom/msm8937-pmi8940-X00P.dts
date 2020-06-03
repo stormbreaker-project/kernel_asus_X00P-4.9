@@ -14,9 +14,9 @@
 /dts-v1/;
 
 #include "msm8937.dtsi"
-#include "msm-pmi8940.dtsi"
+#include "pmi8940.dtsi"
 #include "msm8937-mtp.dtsi"
-#include "msm8937-audio-mtp.dtsi"
+#include "msm8937-audio.dtsi"
 
 / {
         model = "Qualcomm Technologies, Inc. MSM8937-PMI8940 MTP";
@@ -47,7 +47,7 @@
 	};
 };
 
-&pmi8940_charger {
+&qpnp_smbcharger {
 	qcom,battery-data = <&mtp_batterydata>;
 	qcom,chg-led-sw-controls;
 	qcom,chg-led-support;
@@ -101,7 +101,7 @@
 	};
 };
 
-&pmi8940_fg {
+&qpnp_fg {
 	qcom,battery-data = <&mtp_batterydata>;
 };
 
