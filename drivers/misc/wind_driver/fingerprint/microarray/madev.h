@@ -98,7 +98,6 @@
 #include <linux/gpio.h>
 #include <linux/spi/spi.h>
 #include <linux/ioctl.h>
-#include <linux/wakelock.h>
 #include <linux/mm.h>
 #include "ioctl_cmd.h"
 
@@ -134,7 +133,7 @@ struct fprint_spi {
 #ifdef CONFIG_HAS_EARLYSUSPEND
     struct early_suspend suspend;
 #endif
-    struct wake_lock wl;
+    struct wakeup_source wl;
 };
 //end
 

@@ -48,7 +48,6 @@
 #include <linux/spi/spidev.h>
 #include <linux/printk.h>
 
-#include <linux/wakelock.h>
 #include <linux/notifier.h> //zhangkaiyuan@wind-mobi.com 20180308
 
 #include "sf_ctl.h"
@@ -98,7 +97,7 @@ struct sf_ctl_device {
     struct notifier_block notifier; //zhangkaiyuan@wind-mobi.com 20180308
 //zhangkaiyuan@wind-mobi.com 20180309 begin	
 #if ANDROID_WAKELOCK
-    struct wake_lock wakelock;
+    struct wakeup_source wakelock;
 #endif
 //zhangkaiyuan@wind-mobi.com 20180309 end
 };
@@ -334,7 +333,7 @@ static irqreturn_t sf_ctl_device_irq(int irq, void *dev_id)
     schedule_work(&sf_ctl_dev->work_queue);
 //zhangkaiyuan@wind-mobi.com 20180309 begin	
 #if ANDROID_WAKELOCK
-    wake_lock_timeout(&sf_ctl_dev->wakelock, msecs_to_jiffies(5000));
+    __pm_wakeup_event(&sf_ctl_dev->wakelock, msecs_to_jiffies(5000));
 #endif
 //zhangkaiyuan@wind-mobi.com 20180309 end
     enable_irq(irq);
@@ -748,7 +747,7 @@ static int __init sf_ctl_driver_init(void)
     }
 //zhangkaiyuan@wind-mobi.com 20180309 begin
 #if ANDROID_WAKELOCK
-    wake_lock_init(&sf_ctl_dev.wakelock, WAKE_LOCK_SUSPEND, "sf_wakelock");
+    wakeup_source_init(&sf_ctl_dev.wakelock, "sf_wakelock");
 #endif
 //zhangkaiyuan@wind-mobi.com 20180309 end
 
@@ -813,7 +812,7 @@ static void __exit sf_ctl_driver_exit(void)
 
 //zhangkaiyuan@wind-mobi.com 20180309 begin	
 #if ANDROID_WAKELOCK
-    wake_lock_destroy(&sf_ctl_dev.wakelock);
+    wakeup_source_trash(&sf_ctl_dev.wakelock);
 #endif
 //zhangkaiyuan@wind-mobi.com 20180309 end
     misc_deregister(&sf_ctl_dev.miscdev);

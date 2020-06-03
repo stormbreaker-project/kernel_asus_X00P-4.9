@@ -21,7 +21,6 @@
 #include <linux/of.h>
 #include "madev.h"
 #include <linux/spi/spi.h>
-#include <linux/wakelock.h>
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/fs.h>
@@ -47,7 +46,6 @@
 #include <linux/gpio.h>
 #include <linux/spi/spidev.h>
 //#include "mt_spi.h"
-#include <linux/wakelock.h>
 //#include <mt-plat/mt_gpio.h>
 #include <linux/pinctrl/consumer.h>
 //macro settings
