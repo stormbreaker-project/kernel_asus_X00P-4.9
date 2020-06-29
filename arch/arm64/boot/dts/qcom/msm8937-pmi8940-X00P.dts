@@ -99,8 +99,8 @@
 /{
 	mtp_batterydata: qcom,battery-data {
 		qcom,batt-id-range-pct = <60>;
-		#include "X00P-msm8937/battery/batterydata-ascent-3700mAh.dtsi"
-		#include "X00P-msm8937/battery/3340624_Wind_E300cos_4000mAh_averaged_MasterSlave_Feb20th2018_PMI8940.dtsi"
+		#include "X00P/battery/batterydata-ascent-3700mAh.dtsi"
+		#include "X00P/battery/3340624_Wind_E300cos_4000mAh_averaged_MasterSlave_Feb20th2018_PMI8940.dtsi"
 	};
 };
 
