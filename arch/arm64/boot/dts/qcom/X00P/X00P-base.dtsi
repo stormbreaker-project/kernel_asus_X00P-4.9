@@ -13,7 +13,7 @@
 
 #include "X00P-msm8937-mdss-panel.dtsi"
 #include "X00P-msm-pm8937.dtsi"
-#include "X00P-msm-pmi8940.dtsi"
+#include "X00P-msm-pmi8950.dtsi"
 #include "X00P-msm8937.dtsi"
 #include "X00P-msm8937-audio.dtsi"
 #include "X00P-msm8937-audio-mtp.dtsi"
@@ -22,4 +22,4 @@
 #include "X00P-msm8937-camera-sensor-mtp.dtsi"
 #include "X00P-msm8937-mtp.dtsi"
 #include "X00P-msm8937-pinctrl.dtsi"
-#include "X00P-msm8937-pmi8940-mtp.dtsi"
+#include "X00P-msm8937-pmi8950-mtp.dtsi"

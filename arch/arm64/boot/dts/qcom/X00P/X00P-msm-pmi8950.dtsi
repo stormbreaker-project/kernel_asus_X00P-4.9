@@ -12,7 +12,7 @@
  */
 
 &spmi_bus {
-	qcom,pmi8940@2 {
+	qcom,pmi8950@2 {
 		qcom,leds@a100 {
             qcom,led_mpp_2 {
 				label = "mpp";
@@ -25,7 +25,7 @@
                 qcom,mode-ctrl = <0x60>;
                 
                 qcom,mode = "pwm";
-                pwms = <&pmi8940_pwm 0 0>;
+                pwms = <&pmi8950_pwm 0 0>;
                 qcom,pwm-us = <10000>; 
                 qcom,pwm-channel = <0>;
                 linux,default-trigger = "none";  
@@ -36,7 +36,7 @@
 	};
 };
 
-&pmi8940_mpps {
+&pmi8950_mpps {
 	mpp@a000 {
 		qcom,mode = <4>;
 		qcom,src-sel = <0>;
@@ -46,7 +46,7 @@
 	};
 };
 
-&pmi8940_vadc {
+&pmi8950_vadc {
 	chan@10 {
 		label = "mpp1";
 		reg = <0x10>;
@@ -59,16 +59,16 @@
 	};
 };
 
-&pmi8940_charger {
+&pmi8950_charger {
 	/delete-property/ qcom,autoadjust-vfloat;
 
 	qcom,float-voltage-mv = <4350>;
-	qcom,usbin-vadc = <&pmi8940_vadc>;
+	qcom,usbin-vadc = <&pmi8950_vadc>;
 	qcom,jeita-temp-hard-limit =<1>;
-	qcom,mpp1-vadc = <&pmi8940_vadc>;
+	qcom,mpp1-vadc = <&pmi8950_vadc>;
 };
 
-&pmi8940_fg {
+&pmi8950_fg {
 	qcom,resume-soc = <99>;
 	qcom,fg-iterm-ma = <240>;
 	qcom,fg-chg-iterm-ma = <150>;
@@ -82,7 +82,7 @@
 	qcom,hold-soc-while-full = <1>;
 };
 
-&pmi8940_pwm {
+&pmi8950_pwm {
 	/delete-property/ status;
 
 	qcom,dtest-line = <1>;
@@ -93,24 +93,24 @@
 	/delete-property/ qcom,en-ext-pfet-sc-pro;
 };
 
-&pmi8940_flash0 {
+&pmi8950_flash0 {
 	qcom,current = <800>;
 };
 
-&pmi8940_flash1 {
+&pmi8950_flash1 {
 	qcom,max-current = <300>;
 	qcom,current = <80>;
 };
 
-&pmi8940_torch0 {
+&pmi8950_torch0 {
 	qcom,current = <108>;
 };
 
-&pmi8940_torch1 {
+&pmi8950_torch1 {
 	qcom,current = <200>;
 };
 
-&pmi8940_switch {
+&pmi8950_switch {
 	qcom,current = <800>;
 };
 
