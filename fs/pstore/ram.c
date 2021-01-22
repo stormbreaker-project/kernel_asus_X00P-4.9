@@ -739,6 +739,27 @@ static struct platform_driver ramoops_driver = {
 	},
 };
 
+extern void emergency_unlock_console(void);
+static int ramoops_console_notify (struct notifier_block *this,
+		unsigned long event, void *ptr)
+{
+	printk("\n");
+	pr_emerg("ramoops unlock console ...\n");
+	emergency_unlock_console();
+
+	return 0;
+}
+
+static struct notifier_block ramoop_nb = {
+	.notifier_call = ramoops_console_notify,
+	.priority = INT_MAX,
+};
+
+static void ramoops_prepare(void)
+{
+	atomic_notifier_chain_register(&panic_notifier_list, &ramoop_nb);
+}
+
 static void ramoops_register_dummy(void)
 {
 	if (!mem_size)
@@ -798,10 +819,10 @@ static int __init ramoops_memreserve(char *p)
 	ramoops_data.pmsg_size = size / 2;
 	ramoops_data.dump_oops = 1;
 
-	pr_info("msm_reserve_ramoops_memory addr=%llx,size=%lx\n",
-		ramoops_data.mem_address, ramoops_data.mem_size);
+	pr_info("msm_reserve_ramoops_memory addr=%lx,size=%lx\n",
+			ramoops_data.mem_address, ramoops_data.mem_size);
 	pr_info("msm_reserve_ramoops_memory record_size=%lx,ftrace_size=%lx\n",
-		ramoops_data.record_size, ramoops_data.ftrace_size);
+			ramoops_data.record_size, ramoops_data.ftrace_size);
 
 	memblock_reserve(ramoops_data.mem_address, ramoops_data.mem_size);
 
@@ -821,6 +842,7 @@ core_initcall(msm_register_ramoops_device);
 static int __init ramoops_init(void)
 {
 	ramoops_register_dummy();
+	ramoops_prepare();
 	return platform_driver_register(&ramoops_driver);
 }
 postcore_initcall(ramoops_init);
@@ -830,6 +852,7 @@ static void __exit ramoops_exit(void)
 	platform_driver_unregister(&ramoops_driver);
 	platform_device_unregister(dummy);
 	kfree(dummy_data);
+	atomic_notifier_chain_unregister(&panic_notifier_list, &ramoop_nb);
 }
 module_exit(ramoops_exit);
 
