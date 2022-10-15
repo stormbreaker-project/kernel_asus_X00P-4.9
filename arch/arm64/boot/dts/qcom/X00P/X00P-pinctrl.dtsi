@@ -13,6 +13,7 @@
 
 /* msm8937-pinctrl */
 
+/*
 &cam_sensor_rear_reset {
         mux {
                 pins = "gpio38", "gpio35";
@@ -52,6 +53,7 @@
                 pins = "gpio36","gpio50";
         };
 };
+*/
 
 &soc {
 	tlmm: pinctrl@1000000 {
@@ -207,7 +209,8 @@
 				bias-pull-up;
 			};
 		};
- 
+
+/*
         cam_sensor_mipi_switch_default: cam_sensor_mipi_switch_default {
 			mux {
 				pins = "gpio97", "gpio96";
@@ -259,5 +262,6 @@
 				drive-strength = <2>; /* 2 MA */
 			};
 		};
+*/
 	};
 };
