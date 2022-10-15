@@ -2970,6 +2970,8 @@ error:
 	return -EINVAL;
 }
 
+char caPanelName[MDSS_MAX_PANEL_LEN] = {0};
+
 int mdss_dsi_panel_init(struct device_node *node,
 	struct mdss_dsi_ctrl_pdata *ctrl_pdata,
 	int ndx)
@@ -2993,6 +2995,7 @@ int mdss_dsi_panel_init(struct device_node *node,
 						__func__, __LINE__);
 	} else {
 		pr_info("%s: Panel Name = %s\n", __func__, panel_name);
+		strlcpy(caPanelName, panel_name, MDSS_MAX_PANEL_LEN);
 		strlcpy(&pinfo->panel_name[0], panel_name, MDSS_MAX_PANEL_LEN);
 	}
 	rc = mdss_panel_parse_dt(node, ctrl_pdata);
